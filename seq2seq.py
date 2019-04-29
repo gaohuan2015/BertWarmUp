@@ -266,61 +266,6 @@ def timeSince(since, percent):
     rs = es - s
     return '%s (- %s)' % (asMinutes(s), asMinutes(rs))
 
-
-######################################################################
-# 整个培训过程如下：
-#
-# -  启动计时器
-# -  初始化优化器和条件
-# -  创建训练对
-# -  开始绘制空损失数组
-#
-# 然后我们多次调用“train”，偶尔打印进度（示例的百分比、到目前为止的时间、估计的时间）和平均损失。
-#
-
-def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=100, learning_rate=0.01):
-    start = time.time()
-    plot_losses = []
-    print_loss_total = 0  # Reset every print_every
-    plot_loss_total = 0  # Reset every plot_every
-
-    encoder_optimizer = optim.SGD(encoder.parameters(), lr=learning_rate)
-    decoder_optimizer = optim.SGD(decoder.parameters(), lr=learning_rate)
-    training_pairs = [tensorsFromPair(random.choice(pairs))
-                      for i in range(n_iters)]
-    criterion = nn.NLLLoss()
-
-    for iter in range(1, n_iters + 1):
-        training_pair = training_pairs[iter - 1]
-        input_tensor = training_pair[0]
-        target_tensor = training_pair[1]
-
-        loss = train(input_tensor, target_tensor, encoder,
-                     decoder, encoder_optimizer, decoder_optimizer, criterion)
-        print_loss_total += loss
-        plot_loss_total += loss
-
-        if iter % print_every == 0:
-            print_loss_avg = print_loss_total / print_every
-            print_loss_total = 0
-            print('%s (%d %d%%) %.4f' % (timeSince(start, iter / n_iters),
-                                         iter, iter / n_iters * 100, print_loss_avg))
-
-        if iter % plot_every == 0:
-            plot_loss_avg = plot_loss_total / plot_every
-            plot_losses.append(plot_loss_avg)
-            plot_loss_total = 0
-
-    showPlot(plot_losses)
-
-
-######################################################################
-# 绘图结果
-# ----------------
-#
-# 使用Matplotlib完成绘图，使用培训时保存的损失值数组“Plot_Losses”。
-#
-
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
 import matplotlib.ticker as ticker
@@ -335,15 +280,6 @@ def showPlot(points):
     ax.yaxis.set_major_locator(loc)
     plt.plot(points)
 
-
-######################################################################
-# 评价
-# ==========
-#
-# 评估基本上与培训相同，但没有目标，因此我们只需为每一步将解码器的预测反馈给自己。
-# 每次它预测一个单词，我们就把它添加到输出字符串中，如果它预测EOS令牌，我们就停在
-# 那里。我们还存储解码器的注意输出，以便稍后显示。
-#
 
 def evaluate(encoder, decoder, sentence, max_length=MAX_LENGTH):
     with torch.no_grad():
@@ -380,11 +316,6 @@ def evaluate(encoder, decoder, sentence, max_length=MAX_LENGTH):
 
         return decoded_words, decoder_attentions[:di + 1]
 
-
-######################################################################
-# 我们可以从训练集中评估随机句子，打印出输入、目标和输出，以做出一些主观的质量判断：
-#
-
 def evaluateRandomly(encoder, decoder, n=10):
     for i in range(n):
         pair = random.choice(pairs)
@@ -395,88 +326,9 @@ def evaluateRandomly(encoder, decoder, n=10):
         print('<', output_sentence)
         print('')
 
-
-######################################################################
-# 培训和评估
-# =======================
-#
-# 有了所有这些助手函数（看起来像额外的工作，但它使运行多个实验更容易），我们实际上可以初始化网络并开始培训。
-#
-# 请记住，输入的句子经过了严格筛选。对于这个小的数据集，我们可以使用由256个隐藏节点和一个GRU层组成的相对较小的网络。
-# 在使用MacBook CPU大约40分钟后，我们会得到一些合理的结果。
-#
-# .. Note::
-#    如果你运行这个笔记本，你可以训练，中断内核，评估，并在以后继续训练。
-#   注释编码器和解码器初始化的行，然后再次运行“trainiters”。
-#
-
-hidden_size = 256
+hidden_size = 50
 encoder1 = EncoderRNN(input_lang.n_words, hidden_size).to(device)
 attn_decoder1 = AttnDecoderRNN(hidden_size, output_lang.n_words, dropout_p=0.1).to(device)
 
-trainIters(encoder1, attn_decoder1, 75000, print_every=5000)
-
-######################################################################
-#
-
+trainIters(encoder1, attn_decoder1, 1000, print_every=100)
 evaluateRandomly(encoder1, attn_decoder1)
-
-
-######################################################################
-# Visualizing Attention
-# ---------------------
-#
-# A useful property of the attention mechanism is its highly interpretable
-# outputs. Because it is used to weight specific encoder outputs of the
-# input sequence, we can imagine looking where the network is focused most
-# at each time step.
-#
-# You could simply run ``plt.matshow(attentions)`` to see attention output
-# displayed as a matrix, with the columns being input steps and rows being
-# output steps:
-#
-
-output_words, attentions = evaluate(
-    encoder1, attn_decoder1, "je suis trop froid .")
-plt.matshow(attentions.numpy())
-
-
-######################################################################
-# For a better viewing experience we will do the extra work of adding axes
-# and labels:
-#
-
-def showAttention(input_sentence, output_words, attentions):
-    # Set up figure with colorbar
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    cax = ax.matshow(attentions.numpy(), cmap='bone')
-    fig.colorbar(cax)
-
-    # Set up axes
-    ax.set_xticklabels([''] + input_sentence.split(' ') +
-                       ['<EOS>'], rotation=90)
-    ax.set_yticklabels([''] + output_words)
-
-    # Show label at every tick
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
-    ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
-
-    plt.show()
-
-
-def evaluateAndShowAttention(input_sentence):
-    output_words, attentions = evaluate(
-        encoder1, attn_decoder1, input_sentence)
-    print('input =', input_sentence)
-    print('output =', ' '.join(output_words))
-    showAttention(input_sentence, output_words, attentions)
-
-
-evaluateAndShowAttention("elle a cinq ans de moins que moi .")
-
-evaluateAndShowAttention("elle est trop petit .")
-
-evaluateAndShowAttention("je ne crains pas de mourir .")
-
-evaluateAndShowAttention("c est un jeune directeur plein de talent .")
