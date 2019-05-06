@@ -190,4 +190,4 @@ hidden_size = 256
 encoder1 = sm.EncoderRNN(SD.input_lang.n_words, hidden_size).to(device)
 attn_decoder1 = sm.AttnDecoderRNN(hidden_size, SD.output_lang.n_words, dropout_p=0.1).to(device)
 
-trainIters(encoder1, attn_decoder1, 1000, print_every=500)
+trainIters(encoder1, attn_decoder1, 75000, print_every=500)
