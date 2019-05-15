@@ -13,8 +13,8 @@ from model import CBOW
 window = 2          #单词左右单词个数
 EMBED_SIZE=50       
 LEARN_RATE=0.02   #学习率
-BATCH_SIZE = 100     #批训练参数
-DEVICE = "cuda"     # "cpu" GPU跑还是CPU
+BATCH_SIZE = 1000     #批训练参数
+DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")    # GPU跑还是CPU
 TRAIN_NUM = 10     #训练次数
 
 
