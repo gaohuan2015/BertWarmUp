@@ -17,6 +17,26 @@ import torch.nn.functional as F
 sos_token = 0
 eos_token = 1
 
+def cos_dist(txt1, txt2):
+    L1 = txt1.split(' ')
+    L2 = txt2.split(' ')
+    words = dict.fromkeys(L1+L2,0)
+
+    words1 = words.copy()
+    for w in L1:
+        words1[w] = words1.get(w,0) + 1
+    vec1 = list(words1.values())
+
+    words2 = words.copy()
+    for w in L2:
+        words2[w] = words2.get(w,0) + 1
+    vec2 = list(words2.values())
+
+    dist1=float(np.dot(vec1,vec2)/(np.linalg.norm(vec1)*np.linalg.norm(vec2)))
+    
+    return dist1
+
+
 class Lang:
     def __init__(self,name):
         self.name = name
@@ -53,7 +73,7 @@ def normalizeString(s):
 def readLangs(lang1, lang2, reverse=False):
     print("Reading lines...")
 
-    lines = open('nlpdata/data/%s-%s.txt' % (lang1, lang2), encoding='utf-8').\
+    lines = open('seq2seq/nlpdata/data/%s-%s.txt' % (lang1, lang2), encoding='utf-8').\
         read().strip().split('\n')
 
     pairs = [[normalizeString(s) for s in l.split('\t')] for l in lines]
@@ -89,13 +109,13 @@ def filterPairs(pairs):
 
 def prepareData(lang1, lang2, reverse=False):
     input_lang, output_lang, pairs = readLangs(lang1, lang2, reverse)
-    print("Read %s sentence pairs:" % len(pairs))
+    print("读取 %s 对句子:" % len(pairs))
     pairs = filterPairs(pairs)
-    print("Trimmed to %s sentence pairs:" % len(pairs))
+    print("剩余 %s 对句子:" % len(pairs))
     for pair in pairs:
         input_lang.addSentence(pair[0])
         output_lang.addSentence(pair[1])
-    print("Counted words:")
+    print("总的单词数:")
     print(input_lang.name, input_lang.n_words)
     print(output_lang.name, output_lang.n_words)
     return input_lang, output_lang, pairs
@@ -197,8 +217,9 @@ def train(input_variable, target_variable, encoder, decoder, encoder_optimizer, 
     encoder_optimizer.zero_grad()
     decoder_optimizer.zero_grad()
 
-    input_length = input_variable.size()[0]
-    target_length = target_variable.size()[1]
+    input_length = input_variable.size(0)
+    target_length = target_variable.size(0)
+    
 
     encoder_outputs = Variable(torch.zeros(MAX_LENGTH, encoder.hidden_size))
 
@@ -280,19 +301,12 @@ def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=100, lear
             plot_loss_avg = plot_loss_total / plot_every
             plot_losses.append(plot_loss_avg)
             plot_loss_total = 0
-    print('11111111111')
-    showPlot(plot_losses)
 
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
+
+
 import numpy as np
 
-def showPlot(points):
-    plt.figure()
-    fig, ax = plt.subplots()
-    loc = ticker.MultipleLocator(base=0.2)
-    ax.yaxis.set_major_locator(loc)
-    plt.plot(points)
+
 
 def evaluate(encoder, decoder, sentence, MAX_LENGTH=max_length):
     input_variable = varibleFromSentence(input_lang, sentence)
@@ -303,10 +317,10 @@ def evaluate(encoder, decoder, sentence, MAX_LENGTH=max_length):
     for ei in range(input_length):
         encoder_output, encoder_hidden = encoder(input_variable[ei], encoder_hidden)
         encoder_outputs[ei] = encoder_outputs[ei] + encoder_output[0][0]
-        decoder_input = Variable(torch.LongTensor([[sos_token]]))
-        decoder_hidden = encoder_hidden
-        decoded_words = []
-        decoder_attentions = torch.zeros(MAX_LENGTH, MAX_LENGTH)
+    decoder_input = Variable(torch.LongTensor([[sos_token]]))
+    decoder_hidden = encoder_hidden
+    decoded_words = []
+    decoder_attentions = torch.zeros(MAX_LENGTH, MAX_LENGTH)
 
     for di in range(MAX_LENGTH):
         decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden, encoder_outputs)
@@ -324,98 +338,24 @@ def evaluate(encoder, decoder, sentence, MAX_LENGTH=max_length):
     return decoded_words, decoder_attentions[:di +1]
 
 def evaluateRandomly(encoder, decoder, n=10):
+    trueEval = 0
     for i in range(n):
         pair = random.choice(pairs)
         print('>',pair[0])
         print('=',pair[1])
         output_words, attentions = evaluate(encoder, decoder, pair[0])
         output_sentence = ' '.join(output_words)
+        trueEval = trueEval + cos_dist(pair[1],output_sentence)
         print('<',output_sentence)
         print('')
+    print('平均相似度：',trueEval/n)
 
-# hidden_size = 256
-hidden_size = 100
+hidden_size = 512
 encoder1 = EncoderRNN(input_lang.n_words, hidden_size)
 attn_decoder1 = AttnDecoderRNN(hidden_size, output_lang.n_words, dropout_p=0.1)
 
 trainIters(encoder1, attn_decoder1, 1000, print_every=100)
 output_words, attentions = evaluate(encoder1, attn_decoder1, "je suis trop froid .")
-plt.matshow(attentions.numpy())
+
 
 evaluateRandomly(encoder1, attn_decoder1)
-
-def showAttention(input_sentence, output_words, attentions):
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    cax = ax.matshow(attentions.numpy(), cmap='bone')
-    fig.colorbar(cax)
-    ax.set_xticklabels([''] + input_sentence.split(' ') + ['<eos>'], rotation=90)
-    ax.set_yticklabels([''] + output_words)
-
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
-    ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
-
-    plt.show()
-
-def evaluateAndShowAttention(input_sentence):
-    output_words, attentions = evaluate(encoder1, attn_decoder1, input_sentence)
-    print('input=',input_sentence)
-    print('output=',' '.join(output_words))
-    showAttention(input_sentence, output_words, attentions)
-
-evaluateAndShowAttention("elle a cinq ans de moins que moi .")
-# evaluateAndShowAttention("elle est trop petit .")
-# evaluateAndShowAttention("je ne crains pas de mourir .")
-# evaluateAndShowAttention("c est un jeune directeur plein de talent .")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
