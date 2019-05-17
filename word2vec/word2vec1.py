@@ -52,10 +52,10 @@ if torch.cuda.is_available():
 
 def context_to_tensor(context, idx_dict):
 
-    context_idx = [idx_dict[context] ]
+    context_idx = [idx_dict[word]for word in context ]
     # print(context_idx)
 
-    return Variable(torch.LongTensor(context_idx))
+    return ((context_idx))
 
 
 def getmax4(num_list,topk=4):
@@ -72,37 +72,46 @@ for e in range(step):
     relly = 0
     i = 0
     for bag in data:
+        model.zero_grad()
+        context_data = torch.LongTensor([word_to_idx[bag[0]]]).cuda()
+        target_data = (context_to_tensor(bag[1], word_to_idx))
+        # print(target_data)
         loss = 0
         i += 1
+        # print(target_data[0],target_data[1],target_data[2],target_data[3])
         # print(bag[0], word_to_idx)
         # target_data = context_to_tensor(bag[1], word_to_idx).cuda()
-        for j in range(4):
-            context_data = torch.LongTensor([word_to_idx[bag[0]]]).cuda()
-            target_data = (context_to_tensor(bag[1][j], word_to_idx)).cuda()
-            # print(target_data)
-            model.zero_grad()
-            prediction = MyModel(context_data)
-            loss = loss_function(prediction, target_data)
-            loss.backward()
-            optimizer.step()
-        prediction1=prediction.cpu()
-        prediction_numpy=prediction1.detach().numpy()
-        # print(word_to_idx[bag[1][0]])
-        # print(type(prediction_numpy))
-        ans1=list()
-        for i1 in bag[1]:
-            ans1.append(float(prediction_numpy[0,word_to_idx[i1]]))
+        target_length=len(target_data)
+        prediction = MyModel(context_data)
+        for j in range(target_length):
+            # print(target_data[j])
+            # print(prediction,torch.LongTensor(list(target_data[j])))
+            target_data1=Variable(torch.LongTensor([target_data[j]])).cuda()
+            # print(target_data1)
+            # print(prediction,target_data1)
+            loss += loss_function(prediction, target_data1)
+
+
+        loss.backward()
+        optimizer.step()
+        # prediction1=prediction.cpu()
+        # prediction_numpy=prediction1.detach().numpy()
+        # # print(word_to_idx[bag[1][0]])
+        # # print(type(prediction_numpy))
+        # ans1=list()
+        # for i1 in bag[1]:
+        #     ans1.append(float(prediction_numpy[0,word_to_idx[i1]]))
+        # # print(ans1)
+        # maxout=list()
+        # maxout.append(list(prediction_numpy[0,:]))
+        # maxout=maxout[0]
+        # # print(maxout)
+        # outm=list()
+        # for i in range(4):
+        #     outm.append(max(maxout))
+        #     maxout.remove([max(maxout)])
         # print(ans1)
-        maxout=list()
-        maxout.append(list(prediction_numpy[0,:]))
-        maxout=maxout[0]
-        # print(maxout)
-        outm=list()
-        for i in range(4):
-            outm.append(max(maxout))
-            maxout.remove([max(maxout)])
-        print(ans1)
-        print(outm)
+        # print(outm)
         total_loss += loss.data
         # if (prediction[0,word_to_idx[bag[1]]]==torch.max(prediction)):
         #     relly+=1
