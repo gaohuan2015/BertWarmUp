@@ -14,25 +14,6 @@ import torch.nn.functional as F
 sos_token = 0
 eos_token = 1
 
-def cos_dist(txt1, txt2):
-    L1 = txt1.split(' ')
-    L2 = txt2.split(' ')
-    words = dict.fromkeys(L1+L2,0)
-
-    words1 = words.copy()
-    for w in L1:
-        words1[w] = words1.get(w,0) + 1
-    vec1 = list(words1.values())
-
-    words2 = words.copy()
-    for w in L2:
-        words2[w] = words2.get(w,0) + 1
-    vec2 = list(words2.values())
-
-    dist1=float(np.dot(vec1,vec2)/(np.linalg.norm(vec1)*np.linalg.norm(vec2)))
-    
-    return dist1
-
 class Lang:
     def __init__(self,name):
         self.name = name
@@ -307,6 +288,25 @@ def evaluate(encoder, decoder, sentence, MAX_LENGTH=max_length):
         # decoder_input = decoder_input.cuda() if use_cuda else decoder_input
 
     return decoded_words
+
+def cos_dist(txt1, txt2):
+    L1 = txt1.split(' ')
+    L2 = txt2.split(' ')
+    words = dict.fromkeys(L1+L2,0)
+
+    words1 = words.copy()
+    for w in L1:
+        words1[w] = words1.get(w,0) + 1
+    vec1 = list(words1.values())
+
+    words2 = words.copy()
+    for w in L2:
+        words2[w] = words2.get(w,0) + 1
+    vec2 = list(words2.values())
+
+    dist1=float(np.dot(vec1,vec2)/(np.linalg.norm(vec1)*np.linalg.norm(vec2)))
+
+    return dist1
 
 def evaluateRandomly(encoder, decoder, n=10):
     trueEval = 0
