@@ -16,7 +16,7 @@ word_to_ix = {word: i for i, word in enumerate(vocab)}
 # enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列
 data = []
 for i in range(3, len(raw_text) - 3):
-    context = [raw_text[i - 3],raw_text[i - 2], raw_text[i - 1], raw_text[i + 1], raw_text[i + 2],raw_text[i + 3]] #上下文，各取3个词
+    context= [raw_text[i - 3],raw_text[i - 2], raw_text[i - 1], raw_text[i + 1], raw_text[i + 2],raw_text[i + 3]] #上下文，各取3个词
     target = raw_text[i] #目标词
     data.append((context, target))
 print(data[:7]) #每次输出7个词
@@ -45,7 +45,7 @@ loss_function = nn.NLLLoss() #损失函数即目标函数，这里使用了常�
 optimizer = optim.SGD(model.parameters(), lr=0.001) #SGD优化
 
 #训练
-for epoch in range(20):
+for epoch in range(10):
     print('epoch{}'.format(epoch))
     #print('*' * 10)
     total_loss = 0 #总损失
