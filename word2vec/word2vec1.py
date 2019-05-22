@@ -6,16 +6,7 @@ from torch.autograd import Variable
 import numpy as np
 import copy
 import heapq
-word = open('leta.en', 'r', encoding='utf-8')
-word = word.read().split()
-word1 = set(word)
-word_to_idx = {word: idx for idx, word in enumerate(word1)}
-data = list()
-for i in range(2, len(word1) - 2):
-    # Context, target
-    bow = (word[i], [word[i - 2], word[i - 1], word[i + 1], word[i + 2]])
-    data.append(bow)
-print(data)
+
 
 
 class SKT(nn.Module):
@@ -40,14 +31,7 @@ qianru = 32
 hidden = 128
 jindu = 0.0001
 step = 30
-print(len(word))
 
-model = SKT(len(word1), yujing, qianru, hidden)
-print(model)
-optimizer = opt.Adam(model.parameters(), lr=jindu)
-loss_function = nn.NLLLoss()
-if torch.cuda.is_available():
-    MyModel = model.cuda()
 
 
 def context_to_tensor(context, idx_dict):
@@ -66,58 +50,97 @@ def getmax4(num_list,topk=4):
     min_num_index=map(num_list.index, heapq.nsmallest(topk,num_list))
     print ('max_num_index:',max_num_index)
     print ('min_num_index:',min_num_index)
+mod=0
+if mod==0:
+    word = open('leta.en', 'r', encoding='utf-8')
+    word2 = open('leta2.en', 'r', encoding='utf-8')
+    word = word.read().split()
+    word2 = word2.read().split()
+    word1 = set(word)
+    word3 = set(word2)
+    word_to_idx = {word: idx for idx, word in enumerate(word3)}
+    print(word_to_idx)
+    data = list()
+    model = SKT(len(word3), yujing, qianru, hidden)
+    data = list()
+    for i in range(2, len(word1) - 2):
+        # Context, target
+        bow = (word[i], [word[i - 2], word[i - 1], word[i + 1], word[i + 2]])
+        data.append(bow)
+    # print(data)
+    # print(len(word))
+    print(model)
+    optimizer = opt.Adam(model.parameters(), lr=jindu)
+    loss_function = nn.NLLLoss()
+    if torch.cuda.is_available():
+        MyModel = model.cuda()
+    for e in range(step):
+        total_loss = torch.FloatTensor([0])
+        relly = 0
+        i = 0
+        for bag in data:
+            model.zero_grad()
+            context_data = torch.LongTensor([word_to_idx[bag[0]]]).cuda()
+            target_data = (context_to_tensor(bag[1], word_to_idx))
+            # print(target_data)
+            loss = 0
+            i += 1
+            # print(target_data[0],target_data[1],target_data[2],target_data[3])
+            # print(bag[0], word_to_idx)
+            # target_data = context_to_tensor(bag[1], word_to_idx).cuda()
+            target_length=len(target_data)
+            prediction = MyModel(context_data)
+            for j in range(target_length):
+                # print(target_data[j])
+                # print(prediction,torch.LongTensor(list(target_data[j])))
+                target_data1=Variable(torch.LongTensor([target_data[j]])).cuda()
+                # print(target_data1)
+                # print(prediction,target_data1)
+                loss += loss_function(prediction, target_data1)
+        loss.backward()
+        optimizer.step()
+        total_loss += loss.data
+    torch.save(model, "word2vec1.pth")
+    print('Step: {} | Loss: {}'.format(e, total_loss.numpy()))
 
-for e in range(step):
+    word = open('leta1.en', 'r', encoding='utf-8')
+    word = word.read().split()
+    word1 = set(word)
+    # print(word_to_idx)
+    data = list()
+    for i in range(2, len(word1) - 2):
+        # Context, target
+        bow = (word[i], [word[i - 2], word[i - 1], word[i + 1], word[i + 2]])
+        data.append(bow)
+    # print(data)
+    # print(len(word))
+    # print(model)
+    optimizer = opt.Adam(model.parameters(), lr=jindu)
+    loss_function = nn.NLLLoss()
+    if torch.cuda.is_available():
+        MyModel = model.cuda()
+
     total_loss = torch.FloatTensor([0])
     relly = 0
     i = 0
     for bag in data:
-        model.zero_grad()
-        context_data = torch.LongTensor([word_to_idx[bag[0]]]).cuda()
-        target_data = (context_to_tensor(bag[1], word_to_idx))
-        # print(target_data)
-        loss = 0
-        i += 1
-        # print(target_data[0],target_data[1],target_data[2],target_data[3])
-        # print(bag[0], word_to_idx)
-        # target_data = context_to_tensor(bag[1], word_to_idx).cuda()
-        target_length=len(target_data)
-        prediction = MyModel(context_data)
-        for j in range(target_length):
-            # print(target_data[j])
-            # print(prediction,torch.LongTensor(list(target_data[j])))
-            target_data1=Variable(torch.LongTensor([target_data[j]])).cuda()
-            # print(target_data1)
-            # print(prediction,target_data1)
-            loss += loss_function(prediction, target_data1)
-
-
-        loss.backward()
-        optimizer.step()
-        # prediction1=prediction.cpu()
-        # prediction_numpy=prediction1.detach().numpy()
-        # # print(word_to_idx[bag[1][0]])
-        # # print(type(prediction_numpy))
-        # ans1=list()
-        # for i1 in bag[1]:
-        #     ans1.append(float(prediction_numpy[0,word_to_idx[i1]]))
-        # # print(ans1)
-        # maxout=list()
-        # maxout.append(list(prediction_numpy[0,:]))
-        # maxout=maxout[0]
-        # # print(maxout)
-        # outm=list()
-        # for i in range(4):
-        #     outm.append(max(maxout))
-        #     maxout.remove([max(maxout)])
-        # print(ans1)
-        # print(outm)
-        total_loss += loss.data
-        # if (prediction[0,word_to_idx[bag[1]]]==torch.max(prediction)):
-        #     relly+=1
-        # else:
-        #     relly+=0
-    # Bookkeeping
-    torch.save(model, "word2vec1.pth")
-    # print(relly/i)
-    print('Step: {} | Loss: {}'.format(e, total_loss.numpy()))
+            model.zero_grad()
+            context_data = torch.LongTensor([word_to_idx[bag[0]]]).cuda()
+            target_data = (context_to_tensor(bag[1], word_to_idx))
+            # print(target_data)
+            loss = 0
+            i += 1
+            # print(target_data[0],target_data[1],target_data[2],target_data[3])
+            # print(bag[0], word_to_idx)
+            # target_data = context_to_tensor(bag[1], word_to_idx).cuda()
+            target_length = len(target_data)
+            prediction = MyModel(context_data)
+            for j in range(target_length):
+                # print(target_data[j])
+                # print(prediction,torch.LongTensor(list(target_data[j])))
+                target_data1 = Variable(torch.LongTensor([target_data[j]])).cuda()
+                # print(target_data1)
+                # print(prediction,target_data1)
+                loss += loss_function(prediction, target_data1)
+    total_loss += loss.data
+    print('Loss: {}'.format( total_loss.numpy()))

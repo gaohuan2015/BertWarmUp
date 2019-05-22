@@ -385,7 +385,7 @@ elif model==1:
     T3.eval()
     # AttnDecoderRNN.load_state_dict(torch.load('AttnDecoderRNN.pt'))
     # AttnDecoderRNN.eval()
-    input_lang, output_lang, pairs = prepareData('eng', 'fra', dz='LETA-lv-en/eng-fra.txt', reverse=True)
+    input_lang, output_lang, pairs = prepareData('eng', 'fra', dz='LETA-lv-en/1eng-fra1.txt', reverse=True)
     print(len(pairs))
     print(type(input_lang))
     # print(len(input_lang))

@@ -240,10 +240,13 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
     else:
         # Without teaching forcing: use its own predictions as the next input
         for di in range(target_length):
+            # print(target_length)
+            # print(target_tensor)
             decoder_output, decoder_hidden, decoder_attention = decoder(
                 decoder_input, decoder_hidden, encoder_outputs)
             topv, topi = decoder_output.topk(1)
             decoder_input = topi.squeeze().detach()  # detach from history as input
+            print(decoder_output,target_tensor[di])
 
             loss += criterion(decoder_output, target_tensor[di])
             if decoder_input.item() == EOS_token:
