@@ -1,0 +1,196 @@
+thriftlesstensor([[ 0.6735, -0.2968, -1.0188,  1.0483, -0.2045, -2.0251,  1.2856, -0.9624,
+          0.0844, -0.5044]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+deserv'dtensor([[-0.8693, -0.4513, -0.8488,  0.3172,  0.1995, -1.5178, -0.5366, -0.4189,
+          0.2214, -0.7320]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+oldtensor([[ 0.4557,  0.5569,  0.4667, -0.8262,  0.1365, -1.2717,  0.6837, -2.0591,
+         -0.8129, -0.1562]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+bloodtensor([[-0.7972,  0.8838, -0.4312,  1.2274, -0.3238,  1.2643,  0.0229, -0.0602,
+         -0.2951,  1.3783]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Howtensor([[-1.7865, -1.5409, -2.7464,  0.9269, -0.4340,  0.8967,  1.0662, -0.7536,
+          0.8641,  1.0527]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+newtensor([[-0.2560, -0.3570, -0.1110, -0.8039,  0.5989, -2.2236, -0.6037,  0.3814,
+          0.8725,  0.6327]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+digtensor([[-0.1938,  2.0025, -0.8836,  1.4123,  0.5079, -0.8217, -1.2871,  0.6705,
+          0.7344,  0.6534]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+say,tensor([[-0.6516, -0.0304, -0.0357, -1.4618, -0.5526, -0.5751,  0.5872, -0.0869,
+          0.0510,  1.4918]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+fairtensor([[-0.2236,  0.8362, -1.1592,  0.6439, -0.8040, -1.1934, -0.7739, -0.4903,
+          0.6497, -1.1930]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+oftensor([[ 3.0990, -0.2416,  0.1261, -1.2418, -0.4731,  2.0258,  2.5361,  0.3486,
+         -1.8849, -0.3943]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+minetensor([[-0.1906, -1.4299, -0.5149,  0.8882, -1.3605, -0.2311, -1.0088,  2.3078,
+          0.6547, -0.3275]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+beauty'stensor([[ 0.8060, -0.2181,  2.5902,  1.8188, -0.7815, -1.1320, -0.4114, -1.1985,
+          0.6953,  1.0230]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+thine!tensor([[ 1.4761,  0.9506, -0.8418, -0.4103,  0.9535,  0.1567,  1.1008, -1.4582,
+          0.7785, -0.2000]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+muchtensor([[ 0.1414,  0.0957, -0.1643,  0.1333,  1.1111,  0.8170,  0.7730, -0.1286,
+          1.2855, -0.3106]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+treasuretensor([[ 0.9275,  0.8464,  0.9404, -0.2569, -1.3949,  0.4083,  0.3003, -1.2807,
+         -0.6834, -0.5274]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+'Thistensor([[-0.5481,  0.3608, -0.2704, -0.0617,  0.9131, -2.1842, -1.5033,  0.7010,
+         -0.7620,  0.5827]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Andtensor([[-0.5763, -0.1521, -0.8870, -0.4267, -0.4160, -0.2625, -0.1896, -0.1584,
+         -0.2364, -0.4031]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+thoutensor([[ 1.2750,  2.1331,  0.5061,  0.2213,  0.3686, -0.9969,  1.4645, -0.2865,
+         -0.1059, -1.6020]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+totter'dtensor([[-0.6134, -0.4801, -0.6311,  0.4939,  0.9906, -1.3450,  0.5717, -1.1570,
+          1.6607, -0.9851]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+praise.tensor([[-0.0657, -1.7724, -0.6604, -1.0571, -2.4768, -0.5775, -0.5397, -0.9606,
+         -1.6435,  0.4575]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+days;tensor([[-1.1450,  0.0350, -1.0960, -1.2157,  0.1888,  0.3288, -1.3012,  1.9409,
+          0.5673, -0.4150]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+cold.tensor([[-0.0138, -0.3380,  0.3023,  0.3315, -0.4724, -1.2925,  2.0900, -0.6283,
+         -0.9281, -1.7473]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+held:tensor([[ 0.4405, -0.6441, -1.8602, -1.5956,  0.3243,  0.8773, -1.8546,  1.7569,
+          0.3105, -0.7150]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+old,tensor([[ 1.6680, -0.0055,  0.2273,  0.9951, -0.1024,  0.4954,  0.5741, -0.4190,
+          0.4779,  3.3036]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+worthtensor([[-1.7886, -0.2253,  0.4066, -0.9834,  1.2147, -1.2459, -0.9408,  0.0227,
+         -1.6462, -1.2485]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+thetensor([[-1.2775,  0.3120,  0.4867, -0.2456,  1.0871,  0.2007, -1.3067, -0.0914,
+          1.5759,  1.3368]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+successiontensor([[ 0.1725, -0.1289, -1.1950, -1.0457, -0.4155,  0.1137,  1.0643, -0.4562,
+         -0.7850, -1.4569]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+warmtensor([[ 1.1165, -1.0866, -0.7373, -1.9124,  1.2165, -0.6228,  0.3194,  1.5677,
+          0.1877, -1.6659]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+alltensor([[-0.2183,  0.5635, -0.4492,  0.3521, -1.6341, -0.4084,  1.5684, -1.1610,
+          0.4139,  0.9582]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+childtensor([[-1.3252,  1.0365,  0.9012, -0.6103,  1.2974, -1.1426,  1.0124,  1.1756,
+          1.4509, -0.2485]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+praisetensor([[-0.1351, -0.8193,  1.0805, -0.0697, -0.6836, -0.4442, -0.6126,  1.4252,
+          0.1896, -0.7881]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+couldsttensor([[-1.4323,  0.1728, -0.3136, -0.3202, -0.0766,  1.5980,  0.8811,  0.1983,
+         -0.7611, -0.3430]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+weedtensor([[-0.8201, -0.5276, -0.3417, -0.8710, -1.0810, -3.2032,  1.2447, -0.5550,
+         -0.6899, -0.2344]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+now,tensor([[-0.4043,  0.6136, -0.4425,  0.9551,  0.9012, -1.5199, -1.0681, -0.9983,
+          0.8983, -1.6895]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+betensor([[ 1.3246,  1.1544,  0.0111, -0.0469,  0.1418,  1.8041,  1.4706,  1.5052,
+         -0.4950,  0.1173]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+proudtensor([[-1.4861, -1.3250,  0.3173, -0.0866,  0.2306, -0.3752,  0.0617, -0.1396,
+         -1.6948, -0.8120]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+moretensor([[-0.0467,  0.4966, -0.5837,  0.3105,  1.7744, -1.5177, -0.4755,  1.0124,
+         -0.5503,  0.4787]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+owntensor([[ 1.0880, -1.1743,  0.2454,  1.5204, -0.7184,  2.1417, -0.6965, -0.8966,
+          0.2717,  0.0889]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+atensor([[ 0.2025,  0.3339,  0.4841,  0.0488, -0.1412,  2.9719, -2.7425, -1.1913,
+         -0.1636, -0.9311]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+brow,tensor([[ 0.7372,  0.0551,  0.0788,  0.7568, -0.9004,  0.2595,  0.2628,  1.7046,
+         -0.7804, -0.7730]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+madetensor([[ 0.7220, -0.0485,  1.2450,  1.0749,  1.2442,  0.4831,  1.2636, -1.0207,
+          1.1539,  0.3522]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+bytensor([[ 0.2730, -0.5433, -0.3930,  0.5973, -0.2711, -0.4323, -0.2248,  0.0347,
+          0.0009, -0.8973]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Provingtensor([[-1.7314, -1.2449,  1.7176,  0.4922,  1.0595,  1.0754, -1.1502, -0.2604,
+         -1.2158, -0.4492]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+andtensor([[-1.5434,  0.8764,  0.8171,  2.2716, -2.0653,  0.4102,  0.7815, -1.2826,
+         -0.6900, -0.4918]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Weretensor([[-0.5256, -0.6864,  0.4159, -0.8179,  1.3814, -1.3727, -1.5788, -0.9558,
+          0.6068, -0.6744]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Totensor([[ 0.9722,  0.3411,  0.6623, -0.2934,  0.3322,  1.0660,  0.2064,  0.6903,
+          0.0812,  0.7591]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+winterstensor([[ 0.1630,  0.4038,  0.6905, -1.5471,  1.2636,  0.5879,  0.4806,  0.3411,
+          0.2947,  1.1113]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+sumtensor([[ 0.5205, -0.1403,  0.1576,  1.0758, -0.2977,  1.2946,  2.0454,  0.9345,
+         -1.4206,  0.4094]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+weretensor([[ 0.0710,  0.8442,  0.5792, -0.6832,  1.7907, -0.4843,  0.6884,  0.7067,
+          0.2437, -0.3317]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+sunkentensor([[-0.0145, -1.2392, -0.9924, -0.3663, -0.1660, -0.9634, -1.0485, -0.6133,
+          0.5145,  1.9049]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+beingtensor([[-0.4344,  1.0660,  2.4034, -0.8554, -1.1092,  0.3589,  0.3444,  0.4793,
+          1.2964, -0.1062]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+beautytensor([[-1.5833, -0.0068,  0.3671,  1.5462,  0.3066,  0.1062, -0.2436, -0.5744,
+         -0.2159,  0.3999]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Thentensor([[ 0.5329, -1.0241,  0.0664, -1.1894, -1.2827,  0.9484, -0.1862, -1.4360,
+         -1.3746, -1.0497]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+whentensor([[-0.2036, -0.6091,  0.2799, -0.4616, -0.3883, -0.6449,  0.6293,  0.5899,
+         -0.0132, -0.9175]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+feel'sttensor([[ 1.6778, -0.2256,  0.5292, -1.8004, -0.3856, -1.1129,  0.1524,  0.5682,
+          0.3653,  0.3183]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+totensor([[ 1.3364, -0.4459, -1.0535,  0.0619, -1.5130,  2.1278, -0.1982, -0.4596,
+          1.1128,  0.1514]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Wheretensor([[ 0.8661,  1.1376,  0.7337,  1.4020,  0.2063, -0.2260, -0.3578, -0.6368,
+          0.3024, -0.7416]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+seetensor([[ 1.5521,  1.3294, -1.2281, -0.1322,  0.4003, -0.5807, -1.3714,  2.0757,
+          0.2115, -0.4159]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Shalltensor([[ 1.0386,  0.1342,  0.6985, -0.3198,  1.2143,  1.1379,  0.9511,  0.0253,
+          0.3316,  0.3458]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+shalltensor([[-2.3137,  0.2800, -1.9917, -2.4791, -0.4536,  0.1008, -0.1085, -0.8971,
+         -0.0294, -0.7462]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+excuse,'tensor([[-0.4775,  0.5353,  0.0710, -0.0357,  0.3453,  0.8346,  0.7465, -1.2325,
+          1.1790,  0.9844]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+arttensor([[-0.6012, -0.7466, -0.2931, -0.0519,  1.1050, -0.9284, -0.3499, -1.1087,
+         -0.3782,  1.7072]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Whentensor([[-0.5037,  0.0704, -0.8519,  2.6031,  1.0414, -0.4012, -0.7704,  0.3863,
+         -0.3018,  0.4726]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+besiegetensor([[-0.3539, -1.8627, -0.0521,  0.7266, -0.9249,  0.1110, -1.5913,  1.7298,
+         -0.3985,  1.5058]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+all-eatingtensor([[ 0.0865, -0.6405,  0.5088,  0.6516,  1.9314, -0.0283, -0.9232, -0.0383,
+          2.6625,  0.3905]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+use,tensor([[-1.1869, -1.4748,  0.0896,  0.6700,  0.6546, -1.0628,  0.4437,  0.4480,
+          0.0608, -1.8075]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+intensor([[-0.3693,  0.0846,  0.2509,  1.1457,  0.7798,  0.1628, -1.2825, -2.3256,
+          1.1107, -0.3919]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Iftensor([[-0.7428, -0.5844,  1.2419,  0.7052,  1.0568, -0.5003, -1.2234, -0.8419,
+         -0.8299, -0.9792]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+deeptensor([[-0.5447, -0.6869, -0.0272, -0.5253,  0.0216,  1.3564,  0.3835, -0.4280,
+          0.1736, -0.7647]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+ittensor([[ 0.4333, -0.6525,  0.2187,  1.0502,  1.9210,  0.0753,  0.3918, -0.3727,
+         -0.4540, -0.0215]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+eyes,tensor([[ 0.2201, -0.4393, -0.9447,  1.7510, -1.8581,  1.4579,  0.6942, -1.7630,
+          1.2514,  1.6075]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+smalltensor([[ 0.5607, -1.3016, -0.2973,  1.4640,  2.1811,  0.6868, -0.4513, -0.6910,
+         -0.1322, -1.3452]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+wheretensor([[ 0.6184,  1.1901, -0.7196, -0.2330, -0.9808,  1.1737, -0.6453, -0.0314,
+         -1.2000,  0.1357]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+count,tensor([[ 1.0391,  0.1086,  0.4479,  0.2037, -1.0275, -1.8819, -0.6685, -0.6503,
+         -0.0280,  0.7775]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Thistensor([[ 0.7792,  0.0418, -1.4835, -0.4263,  0.2877, -0.9894, -0.7765, -1.0451,
+         -0.1162, -0.5145]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+fortytensor([[-0.1369, -0.7368, -0.1144, -0.7951,  1.1628, -0.9549, -0.2918, -1.1926,
+          0.1315, -0.5172]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+lustytensor([[ 0.3519,  0.9274,  0.6650, -1.6578,  0.2037, -0.0117, -1.6211, -0.5533,
+          0.1153,  0.6197]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+trenchestensor([[ 0.7996, -1.0908, -0.0767, -0.5606,  1.2030, -1.8557,  0.6571,  0.4099,
+         -0.6754, -0.8703]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+field,tensor([[ 1.6239, -0.2911, -1.8973,  0.5474, -0.0380,  0.2205,  1.4386,  0.8115,
+          1.8627,  1.9300]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Willtensor([[-7.2391e-01,  1.0304e-01, -3.2930e-01, -7.6678e-01,  1.0038e+00,
+          1.5877e+00, -2.1334e-01, -1.2250e+00,  3.1703e-01, -6.1705e-04]],
+       device='cuda:0', grad_fn=<EmbeddingBackward>)
+gazedtensor([[ 0.7459, -0.5309, -1.0420,  0.2790,  0.3898,  2.0216, -0.2829, -0.5042,
+         -0.6198,  0.7617]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+liverytensor([[-9.1283e-01, -1.2286e+00, -1.0492e+00,  4.0703e-01,  5.5101e-04,
+          8.6849e-01, -2.0505e+00, -9.4480e-01,  7.1916e-01, -4.2793e-01]],
+       device='cuda:0', grad_fn=<EmbeddingBackward>)
+ontensor([[-0.5481,  0.9387,  0.2930,  0.8863, -1.8375,  0.2492, -0.5844, -0.3011,
+         -0.6770,  1.2350]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+maketensor([[-0.7730, -1.5976, -1.6501,  1.0892, -2.7782,  1.2687,  1.2651, -1.0866,
+         -0.6458,  0.8972]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+histensor([[-0.0561,  0.2866,  0.5494, -0.8847,  0.1812,  1.0500,  0.4965, -0.5123,
+         -0.1202,  0.5030]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+lies,tensor([[ 1.0595, -1.2595, -1.1640,  1.2789, -1.7319, -2.4331,  0.3894, -1.0598,
+         -0.0864,  1.6364]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+youth'stensor([[ 1.1018, -0.3078, -3.3139, -0.6345,  0.0707,  0.6382, -1.5813, -1.3422,
+          0.5110, -0.2177]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+thinetensor([[-0.3681, -1.0933, -0.1456,  0.4276, -1.7709,  0.9929, -0.1637,  0.6957,
+         -0.0912, -0.1962]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+Thytensor([[-0.4853,  1.0178, -0.2734, -0.1336,  0.3621, -0.7993, -1.9072, -0.6595,
+         -1.3035,  0.3901]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+antensor([[-1.1862, -1.0882,  0.1694,  1.0423,  0.6944, -1.3983,  0.8122,  1.2949,
+         -0.4036,  0.1722]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+sotensor([[-3.2302, -3.2043,  0.5479, -0.2944, -0.5631, -0.3418,  0.9361,  1.0270,
+          0.7667, -1.7725]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+thytensor([[-0.2599,  0.5506,  1.1342, -0.1252, -0.4618, -0.3530,  0.5134, -0.2217,
+         -0.9364, -0.3600]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+shame,tensor([[ 0.6998, -1.7581,  0.0595,  0.0214, -1.8290,  0.0986, -1.0540, -1.8611,
+          0.6074,  0.0455]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+withintensor([[-0.1158,  0.4215, -0.7521, -0.3443, -0.5269,  0.4865,  1.6079, -1.1234,
+         -0.1928,  0.4141]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+mytensor([[ 0.6689,  0.2831, -0.2135, -0.5168, -0.8538, -0.3068, -0.4254,  0.0220,
+         -1.0854,  0.7766]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+asked,tensor([[-0.5566,  0.7288,  0.0487, -1.0316,  0.5634,  0.7525, -0.6332, -0.6862,
+         -0.0564,  0.5885]], device='cuda:0', grad_fn=<EmbeddingBackward>)
+answertensor([[ 0.2646, -0.1598, -1.1365, -0.1318, -0.6055, -0.4471,  0.3204,  0.1739,
+         -0.5527, -1.4290]], device='cuda:0', grad_fn=<EmbeddingBackward>)
