@@ -6,14 +6,14 @@ import torch.optim as optim
 
 CONTEXT_SIZE = 2
 EMBEDDING_DIM = 10
-study=open('leta.en',encoding='utf-8')
-study=study.read()
+study = open('leta.en', encoding='utf-8')
+study = study.read()
 test_sentence = study.split()
 print(test_sentence)
-dit=open('leta2.en',encoding='utf-8')
-dit=dit.read()
-dit_sentence=dit.split()
-ditvocab=set(dit_sentence)
+dit = open('leta2.en', encoding='utf-8')
+dit = dit.read()
+dit_sentence = dit.split()
+ditvocab = set(dit_sentence)
 # build a list of tuples.  Each tuple is ([ word_i-2, word_i-1 ], target word)
 
 trigrams = [([test_sentence[i], test_sentence[i + 1]], test_sentence[i + 2])
@@ -23,6 +23,7 @@ vocab = set(test_sentence)
 
 word_to_ix = {word: i for i, word in enumerate(ditvocab)}
 ix_to_word = {i: word for i, word in enumerate(ditvocab)}
+
 
 class NGramLanguageModeler(nn.Module):
 
@@ -52,7 +53,6 @@ losses = []
 loss_function = nn.NLLLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.0001)
 
-
 for epoch in range(2000):
     total_loss = torch.Tensor([0]).cuda()
     for context, target in trigrams:
@@ -61,7 +61,6 @@ for epoch in range(2000):
         context_idxs = [word_to_ix[w] for w in context]
         context_var = autograd.Variable(torch.LongTensor(context_idxs)).cuda()
 
-
         # Step 2. Recall that torch *accumulates* gradients. Before passing in a
         # new instance, you need to zero out the gradients from the old
         # instance
@@ -69,11 +68,11 @@ for epoch in range(2000):
 
         # Step 3. Run the forward pass, getting log probabilities over next
         # words
-        log_probs,embedd = model(context_var)
-        tagert=autograd.Variable(torch.LongTensor([word_to_ix[target]])).cuda()
+        log_probs, embedd = model(context_var)
+        tagert = autograd.Variable(torch.LongTensor([word_to_ix[target]])).cuda()
         # Step 4. Compute your loss function. (Again, Torch wants the target
         # word wrapped in a variable)
-        loss = loss_function(log_probs,tagert )
+        loss = loss_function(log_probs, tagert)
 
         # Step 5. Do the backward pass and update the gradient
         loss.backward()
@@ -83,11 +82,43 @@ for epoch in range(2000):
     losses.append(total_loss)
     if epoch % 100 == 0:
         print(total_loss[0])  # The loss decreased every iteration over the training data!
-a=open('answ.txt','w')
-a.write(ix_to_word+'\n'+word_to_ix+'\n')
+a = open('answ.txt', 'w', encoding='utf-8')
+torch.save(model, 'language.pth')
+a.write(str(ix_to_word) + '\n' + str(word_to_ix) + '\n')
 for i in range(0, len(vocab)):
     lookup_tensor = torch.LongTensor([i]).cuda()
-    a.write(ix_to_word[i]+str(embedd(autograd.Variable(lookup_tensor)))+'\n')
-    print(ix_to_word[i])
-    print(embedd(autograd.Variable(lookup_tensor)))
+    a.write(ix_to_word[i] + str(embedd(autograd.Variable(lookup_tensor))) + '\n')
+    # print(ix_to_word[i])
+    # print(embedd(autograd.Variable(lookup_tensor)))
 a.close()
+
+study = open('leta1.en', encoding='utf-8')
+study = study.read()
+test_sentence = study.split()
+print(test_sentence)
+# build a list of tuples.  Each tuple is ([ word_i-2, word_i-1 ], target word)
+
+trigrams = [([test_sentence[i], test_sentence[i + 1]], test_sentence[i + 2])
+            for i in range(len(test_sentence) - 2)]
+
+vocab = set(test_sentence)
+losses = []
+loss_function = nn.NLLLoss()
+optimizer = optim.SGD(model.parameters(), lr=0.0001)
+total_loss = torch.Tensor([0]).cuda()
+for context, target in trigrams:
+    context_idxs = [word_to_ix[w] for w in context]
+    context_var = autograd.Variable(torch.LongTensor(context_idxs)).cuda()
+    log_probs, embedd = model(context_var)
+    tagert = autograd.Variable(torch.LongTensor([word_to_ix[target]])).cuda()
+    loss = loss_function(log_probs, tagert)
+    total_loss += loss.data
+losses.append(total_loss)
+b = open('test.txt', 'w', encoding='utf-8')
+b.write(str(ix_to_word) + '\n' + str(word_to_ix) + '\n')
+for i in range(0, len(vocab)):
+    lookup_tensor = torch.LongTensor([i]).cuda()
+    b.write(ix_to_word[i] + str(embedd(autograd.Variable(lookup_tensor))) + '\n')
+    # print(ix_to_word[i])
+    # print(embedd(autograd.Variable(lookup_tensor)))
+b.close()

@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6cc09e1-d143-4916-9bd6-3bca45716042" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/languagemodel/leta.en" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/languagemodel/leta1.en" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/languagemodel/leta2.en" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/word2vec/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/word2vec/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/word2vec/.idea/word2vec.iml" beforeDir="false" afterPath="$PROJECT_DIR$/word2vec/.idea/word2vec.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/word2vec/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/word2vec/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/word2vec/word2vec.pth" beforeDir="false" afterPath="$PROJECT_DIR$/word2vec/word2vec.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languagemodel/MyLanguageModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/languagemodel/MyLanguageModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languagemodel/answ.txt" beforeDir="false" afterPath="$PROJECT_DIR$/languagemodel/answ.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,26 +28,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/languagemodel/MyLanguageModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1021">
-              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+            <state relative-caret-position="-31">
+              <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
-                <element signature="e#753#1464#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/languagemodel/leta2.en">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/languagemodel/answ.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -80,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-225" />
     <option name="width" value="1176" />
     <option name="height" value="738" />
@@ -101,11 +81,6 @@
             <path>
               <item name="MyGitHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="MyGitHub" type="462c0819:PsiDirectoryNode" />
-              <item name="languagemodel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyGitHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyGitHub" type="462c0819:PsiDirectoryNode" />
               <item name="word2vec" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -115,6 +90,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/languagemodel" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -199,14 +175,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25383994" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25383994" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3285968" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3285968" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -242,13 +217,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/languagemodel/answ.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/word2vec/word2vec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -262,13 +230,22 @@
     <entry file="file://$PROJECT_DIR$/languagemodel/leta2.en">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/languagemodel/test.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/languagemodel/answ.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/languagemodel/MyLanguageModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1021">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        <state relative-caret-position="-31">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#753#1464#0" />
           </folding>
         </state>
       </provider>
