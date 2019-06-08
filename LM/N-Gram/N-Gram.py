@@ -278,7 +278,7 @@ def perplexity(model, sentences, cal_gram_func):
 			prob_log_sum -= float('-inf')
 		return math.pow(2, prob_log_sum/gram_count)
 #smooth
-#@description: 平滑估计计算
+#@description: 平滑估计计算--折扣法
 class Smooth(object):
 	@staticmethod
 	#形参**kwargs：（表示的就是形参中按照关键字传值把多余的传值以字典的方式呈现）
@@ -330,6 +330,7 @@ test_dataset = open('./corpus/toy/test.txt', encoding='utf-8'). \
 
 model_unsmooth = UnGram(train_dataset)
 model_smooth = UnGram(train_dataset, Smooth.discounting)
+#数据平滑方法--折扣法（减值法）
 
 vocabs = model_unsmooth.sort_vocab()
 
@@ -387,10 +388,10 @@ model_smooth = TriGram(train_dataset, Smooth.discounting)
 
 vocabs = model_unsmooth.sort_vocab()
 
-print("- ungram unsmooth -")
+print("- TriGram unsmooth -")
 GramUtil.print_trigram_probs(model_unsmooth, vocabs)
 
-print("- ungram smooth -")
+print("- TriGram smooth -")
 GramUtil.print_trigram_probs(model_smooth, vocabs)
 
 print('- sentence_prob -')
