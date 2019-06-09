@@ -125,6 +125,7 @@ for epoch in range(num_epochs):
         model.zero_grad()
         loss.backward()
         clip_grad_norm_(model.parameters(),0.5)
+        optimizer.step()
 
         step = (i+1) // seq_length
         if step % 20 == 0:
