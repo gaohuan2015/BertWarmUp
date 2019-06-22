@@ -5,7 +5,7 @@ import os
 from torch.nn.utils import clip_grad_norm_
 from RNNLM.util.data import Corpus
 import RNNLM.util.const as con
-
+import RNNLM.util.model as RNNLM
 
 device = torch.device('cpu')
 corpus = Corpus()
@@ -13,21 +13,6 @@ ids = corpus.get_data('data.txt', con.batch_size)
 vocab_size = len(corpus.dictionary)
 num_batches = ids.size(1) // con.seq_length
 
-# RNN model
-class RNNLM(nn.Module):
-    def __init__(self, vocab_size, embed_size, hidden_size, num_layers):
-        super(RNNLM, self).__init__()
-        self.embed = nn.Embedding(vocab_size, embed_size)
-        self.lstm = nn.LSTM(embed_size, hidden_size, num_layers, batch_first=True)
-        self.linear = nn.Linear(hidden_size, vocab_size)
-
-    def forward(self, x, h):
-        x = self.embed(x)
-        out,(h,c) = self.lstm(x,h)  # LSTM前向运算
-        out = out.reshape(out.size(0)*out.size(1),out.size(2))# 把LSTM的输出结果变更为维度reshape
-        out = self.linear(out)
-        return out,(h,c)
-#？？？out,(h,c)
 model = RNNLM(vocab_size, con.embed_size, con.hidden_size, con.num_layers)
 criterion = nn.CrossEntropyLoss() #交叉熵损失
 optimizer = torch.optim.Adam(model.parameters(), lr=con.learning_rate)

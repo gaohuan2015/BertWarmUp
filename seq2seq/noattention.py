@@ -165,8 +165,8 @@ def train(input_variable, target_variable, encoder, decoder, encoder_optimizer, 
     encoder_optimizer.zero_grad()
     decoder_optimizer.zero_grad()
 
-    input_length = input_variable.size()[0]
-    target_length = target_variable.size()[1]
+    input_length = input_variable.size(0)
+    target_length = target_variable.size(1)
 
     encoder_outputs = Variable(torch.zeros(MAX_LENGTH, encoder.hidden_size))
 
